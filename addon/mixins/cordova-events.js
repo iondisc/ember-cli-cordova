@@ -20,9 +20,10 @@ export default Ember.Mixin.create({
 
   subscribeToCordovaEvents: Ember.on('init', function() {
     var cordova = this.get('cordova'),
-        onCordova = this.get('onCordova');
+        onCordova = this.get('onCordova'),
+        getKeys = (Object.keys || Ember.keys);
 
-    Ember.keys(onCordova).forEach(function(key) {
+    getKeys(onCordova).forEach(function(key) {
       var func = Ember.get(onCordova, key);
 
       // subscribe to events
